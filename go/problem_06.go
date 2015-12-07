@@ -28,7 +28,7 @@ func SquareOfSum(n int) int {
 }
 
 func SumOfSquares(n int) int {
-	return n * (n + 1)*(2 * n + 1) / 6
+	return n * (n + 1) * (2*n + 1) / 6
 }
 
 func main() {
@@ -37,5 +37,5 @@ func main() {
 	sum_of_squares := SumOfSquares(num)
 	fmt.Printf("SquareOfSum: %d\n", square_of_sum)
 	fmt.Printf("SumOfSquares: %d\n", sum_of_squares)
-	fmt.Printf("Bingo %d\n", square_of_sum - sum_of_squares)
+	fmt.Printf("Bingo %d\n", square_of_sum-sum_of_squares)
 }

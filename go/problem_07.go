@@ -10,15 +10,15 @@ What is the 10 001st prime number?
 package main
 
 import (
-	"math"
 	"fmt"
+	"math"
 	"time"
 )
 
 func isPrime(n int) bool {
 	max := int(math.Sqrt(float64(n)))
 	for i := 2; i <= max; i++ {
-		if n % i == 0 {
+		if n%i == 0 {
 			return false
 		}
 	}
@@ -27,15 +27,14 @@ func isPrime(n int) bool {
 
 // Sieve of Eratosthenes
 // https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-func BuildSieveOfEratosthenes(a []bool, n int, ) []bool {
-//	println("BuildSieveOfEratosthenes")
-	new_a := make([]bool, n - len(a))
+func BuildSieveOfEratosthenes(a []bool, n int) []bool {
+	//	println("BuildSieveOfEratosthenes")
+	new_a := make([]bool, n-len(a))
 	for i := range new_a {
 		new_a[i] = true
 	}
 
 	a = append(a, new_a...)
-
 
 	for i := 2; int(math.Pow(float64(i), 2)) <= n; i++ {
 		if a[i] {
