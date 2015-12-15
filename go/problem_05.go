@@ -13,7 +13,7 @@ import (
 	"fmt"
 )
 
-func IsDivisibleByAllInRange(num, min, max int) bool {
+func isDivisibleByAllInRange(num, min, max int) bool {
 	for i := min; i <= max; i++ {
 		if num%i != 0 {
 			return false
@@ -28,7 +28,7 @@ func main() {
 	fmt.Printf("min = %d, max = %d\n", min, max)
 
 	num := max
-	for !IsDivisibleByAllInRange(num, min, max) {
+	for !isDivisibleByAllInRange(num, min, max) {
 		num++
 	}
 	fmt.Printf("Bingo %d\n", num)

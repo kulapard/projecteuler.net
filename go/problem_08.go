@@ -38,7 +38,7 @@ import (
 	"strings"
 )
 
-func Multiply(a []int) int {
+func multiply(a []int) int {
 	sum := 1
 	for _, v := range a {
 		sum *= v
@@ -89,7 +89,7 @@ func main() {
 
 	for i := 0; i+digits < len(numbers); i++ {
 		chunk := numbers[i : i+digits]
-		chunkProduct := Multiply(chunk)
+		chunkProduct := multiply(chunk)
 		if chunkProduct > maxProduct {
 			maxProduct = chunkProduct
 			maxChunk = chunk

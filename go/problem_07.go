@@ -27,14 +27,14 @@ func isPrime(n int) bool {
 
 // Sieve of Eratosthenes
 // https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-func BuildSieveOfEratosthenes(a []bool, n int) []bool {
+func buildSieveOfEratosthenes(a []bool, n int) []bool {
 	//	println("BuildSieveOfEratosthenes")
-	new_a := make([]bool, n-len(a))
-	for i := range new_a {
-		new_a[i] = true
+	newA := make([]bool, n-len(a))
+	for i := range newA {
+		newA[i] = true
 	}
 
-	a = append(a, new_a...)
+	a = append(a, newA...)
 
 	for i := 2; int(math.Pow(float64(i), 2)) <= n; i++ {
 		if a[i] {
@@ -46,57 +46,57 @@ func BuildSieveOfEratosthenes(a []bool, n int) []bool {
 	return a
 }
 
-func BruteForce(index_to_find int) int {
+func bruteForce(indexToFind int) int {
 	prime := 0
-	prime_counter := 0
-	for i := 2; prime_counter < index_to_find; i++ {
+	primeCounter := 0
+	for i := 2; primeCounter < indexToFind; i++ {
 		if isPrime(i) {
-			prime_counter++
+			primeCounter++
 			prime = i
 		}
 	}
 	return prime
 }
 
-func SieveOfEratosthenes(index_to_find int) int {
+func sieveOfEratosthenes(indexToFind int) int {
 	var prime int
 
-	prime_counter := 0
-	sieve_size := index_to_find * 20
+	primeCounter := 0
+	sieveSize := indexToFind * 20
 	sieve := []bool{}
-	for prime_counter < index_to_find {
-		prime_counter = 0
-		sieve := BuildSieveOfEratosthenes(sieve, sieve_size)
+	for primeCounter < indexToFind {
+		primeCounter = 0
+		sieve := buildSieveOfEratosthenes(sieve, sieveSize)
 
 		prime = 0
 		//	prime_counter = 0
 		for i := 2; i < len(sieve); i++ {
 			if sieve[i] {
-				prime_counter++
+				primeCounter++
 				prime = i
-				if prime_counter == index_to_find {
+				if primeCounter == indexToFind {
 					break
 				}
 			}
 		}
-		sieve_size = sieve_size * 2
+		sieveSize = sieveSize * 2
 	}
 	return prime
 }
 
 func main() {
-	index_to_find := 10001
+	indexToFind := 10001
 
 	var prime int
 	var t time.Time
 
 	// 1) Brute force (less memory)
 	t = time.Now()
-	prime = BruteForce(index_to_find)
-	fmt.Printf("[%s] Brute force: The %dst prime number is %d\n", time.Since(t), index_to_find, prime)
+	prime = bruteForce(indexToFind)
+	fmt.Printf("[%s] Brute force: The %dst prime number is %d\n", time.Since(t), indexToFind, prime)
 
 	// 2) Sieve of Eratosthenes (faster, sieve size)
 	t = time.Now()
-	prime = SieveOfEratosthenes(index_to_find)
-	fmt.Printf("[%s] Sieve of Eratosthenes: The %dst prime number is %d\n", time.Since(t), index_to_find, prime)
+	prime = sieveOfEratosthenes(indexToFind)
+	fmt.Printf("[%s] Sieve of Eratosthenes: The %dst prime number is %d\n", time.Since(t), indexToFind, prime)
 }

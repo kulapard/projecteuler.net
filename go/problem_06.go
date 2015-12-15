@@ -21,21 +21,21 @@ import (
 	"math"
 )
 
-func SquareOfSum(n int) int {
+func squareOfSum(n int) int {
 	// Sum of arithmetic progression
 	sum := n * (1 + n) / 2
 	return int(math.Pow(float64(sum), 2))
 }
 
-func SumOfSquares(n int) int {
+func sumOfSquares(n int) int {
 	return n * (n + 1) * (2*n + 1) / 6
 }
 
 func main() {
 	num := 100
-	square_of_sum := SquareOfSum(num)
-	sum_of_squares := SumOfSquares(num)
-	fmt.Printf("SquareOfSum: %d\n", square_of_sum)
-	fmt.Printf("SumOfSquares: %d\n", sum_of_squares)
-	fmt.Printf("Bingo %d\n", square_of_sum-sum_of_squares)
+	squareOfSum := squareOfSum(num)
+	sumOfSquares := sumOfSquares(num)
+	fmt.Printf("squareOfSum: %d\n", squareOfSum)
+	fmt.Printf("sumOfSquares: %d\n", sumOfSquares)
+	fmt.Printf("Bingo %d\n", squareOfSum - sumOfSquares)
 }

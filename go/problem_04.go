@@ -16,7 +16,7 @@ import (
 	"strconv"
 )
 
-func Reverse(s string) string {
+func reverse(s string) string {
 	runes := []rune(s)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
 		runes[i], runes[j] = runes[j], runes[i]
@@ -24,12 +24,12 @@ func Reverse(s string) string {
 	return string(runes)
 }
 
-func IsPalindromic(num int) bool {
-	num_str := strconv.Itoa(num)
-	return num_str == Reverse(num_str)
+func isPalindromic(num int) bool {
+	numStr := strconv.Itoa(num)
+	return numStr == reverse(numStr)
 }
 
-func HasDividerInRange(num, min, max int) bool {
+func hasDividerInRange(num, min, max int) bool {
 	for i := min; i <= max; i++ {
 		k := num / i
 		if num%i == 0 && k >= min && k <= max {
@@ -47,7 +47,7 @@ func main() {
 	fmt.Printf("min = %d, max = %d\n", min, max)
 
 	for num := max * max; num >= min; num-- {
-		if IsPalindromic(num) && HasDividerInRange(num, min, max) {
+		if isPalindromic(num) && hasDividerInRange(num, min, max) {
 			fmt.Printf("Bingo! %d\n", num)
 			break
 		}
