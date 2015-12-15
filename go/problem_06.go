@@ -37,5 +37,5 @@ func main() {
 	sumOfSquares := sumOfSquares(num)
 	fmt.Printf("squareOfSum: %d\n", squareOfSum)
 	fmt.Printf("sumOfSquares: %d\n", sumOfSquares)
-	fmt.Printf("Bingo %d\n", squareOfSum - sumOfSquares)
+	fmt.Printf("Bingo %d\n", squareOfSum-sumOfSquares)
 }
